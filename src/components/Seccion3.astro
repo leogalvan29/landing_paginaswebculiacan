@@ -1,0 +1,32 @@
+---
+import tailwind from "@astrojs/tailwind"; 
+
+const {items, titulo_servicios, parrafo_servicios, imagen_servicios} = Astro.props
+console.log(items)
+---
+
+<div class="contenedor-seccion3 w-full  py-10 min-h-[600px] bg-[#eef2f5]">
+    <div class="info-3 flex flex-col justify-between items-center h-[600px] w-[90%] mx-auto max-w-[1140px]">
+      <div class="content-1 h-[300px] flex flex-col justify-center  max-w-[700px]">
+         <h2 class="text-3xl md:text-3xl text-center w-[90%] mx-auto text-[rgba(0,0,0,1)] mb-4">{titulo_servicios}</h2>
+         <p class="text-center text-[1rem] md:text-[1.2rem] text-[rgba(0,0,0,0.55)]">{parrafo_servicios}</p>
+      </div>
+      <div class="content-2 w-[100%] md:w-[100%] h-[300px] flex flex-col items-center md:flex-row justify-between ">
+         <div class="listado w-[100%] md:w-[50%] flex flex-row justify-center">
+            <ul class="pl-5 space-y-3 text-gray-600 list-disc marker:text-indigo-600">
+                {items.map((item) => ( 
+                     <li>{item}</li>
+                ))}
+            
+                
+            </ul>
+         </div> 
+         <div class="imagen-seccion-3 w-[100%] bg-[#eef2f5] md:w-[50%]">
+            <img src={imagen_servicios.url} alt="" class="w-[350px] md:w-[450px] h-auto">
+         </div>   
+      </div> 
+    </div> 
+</div> 
+
+
+  

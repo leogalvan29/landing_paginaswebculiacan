@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Seccion2 from '../components/Seccion2.astro';
+import Seccion3 from '../components/Seccion3.astro';
+
+const data = await fetch(`https://www.paginaswebculiacan.net/wp-json/wp/v2/pages/${3655}`)
+const datos = await data.json()
+
+
+
+const datosLanding = datos.acf
+console.log(datosLanding)
+
+const {titulo_1, descripcion1, cta_1, link_cta1, img_1, titulo_2, logo_wordpress, logo_shopify, logo_astro, logo_google, foto_leonel, sobre_mi, titulo_sobremi , imagen_proceso ,descripcion_proceso , proceso , listado_servicios , titulo_servicios , parrafo_servicios , imagen_servicios , whatsapp_icono} = datosLanding
+
+
+//codigo para eliminar saltos de linea
+
+const htmlFragment = listado_servicios
+const liRegex = /<li>(.*?)<\/li>/g;
+
+	const items = [];
+let match;
+while ((match = liRegex.exec(htmlFragment))) {
+  items.push(match[1]);
+}
+
+// Crear el objeto JSON con la propiedad "items"
+const jsonData = { items };
+
+console.log(jsonData);
+
+---
+
+
+
+
+
+<Layout title="Welcome to Astro.">
+	<a href="#" class="whatsapp-icono fixed z-10 bottom-1 right-2"><img src={whatsapp_icono.url} alt=""></a>
+	
+	 <main class="contenedor-principal">
+        <div class="section-1">
+			<div class="txt-1">
+              <h1>{titulo_1}</h1>
+			  <p>{descripcion1}</p>
+			  <a href="https://web.whatsapp.com/">{cta_1}</a>
+			</div>
+			<div class="img-1">
+              <img src={img_1.url} alt="">
+			</div>
+		</div>
+	
+	 </main> 
+	 <Seccion2 
+		   
+	 titulo={titulo_1}
+	 imagen={imagen_proceso}
+	 descripcion={descripcion_proceso}
+	 proceso={proceso}
+	
+      />
+     
+	  <Seccion3 
+	    items={items} 
+		titulo_servicios={titulo_servicios}
+		parrafo_servicios={parrafo_servicios}
+		imagen_servicios={imagen_servicios}
+	  /> 
+</Layout>
+
+<style> 
+
+	.contenedor-principal{
+		width: 100%;
+		height: auto;
+	}
+
+	.contenedor-principal .section-1 {
+		width: 90%;
+		margin: 0px auto;
+		max-width: 1140px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		min-height: 600px;
+		padding: 50px 0px;
+
+	}
+
+	@media(min-width:768px) {
+		.contenedor-principal .section-1 {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	.section-1 .txt-1 {
+		width: 100%;
+		height: auto;
+	    height: 330px; 
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+
+	}
+
+	.section-1 .txt-1 p {
+		
+		color:rgba(0,0,0,0.55) ;
+	}
+ @media(min-width:768px){
+	.section-1 .txt-1 {
+		width: 50%;
+		height: 600px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+ }
+	.section-1 .txt-1 a {
+		text-decoration: none;
+        background-color: var(--cta);
+        widows: 200px;
+        height: 30px;
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+		justify-content: center;
+		
+		
+         
+	}
+
+	@media(min-width:768px){
+		.section-1 .txt-1 a {
+			padding: 10px 15px;
+		font-size: 22px;
+		position: relative;
+		top: 20px;
+		height: 50px;
+		}
+	}
+
+	.section-1 .txt-1 h1 {
+         font-size: 28px;
+	}
+
+	@media(min-width:768px){
+		.section-1 .txt-1 h1 {
+		font-size: 38px;
+	}
+
+	}
+  
+	 @media(min-width: 768px){
+		.section-1 .txt-1 p {
+			font-size: 24px;
+
+}
+	 }
+	
+
+	
+
+   
+	.img-1 {
+		width: 100%;
+		height: auto;
+		padding: 30px 0px;
+	}
+
+	@media(min-width:768px){
+		.img-1 {
+			width: 50%;
+			display: flex;
+			justify-content: flex-end;
+		} 
+	}
+	.img-1 img {
+		width: 300px;
+		margin: 0px auto; 
+		display: flex;
+		justify-content: center;
+		max-width: 400px;
+		height: 450px; 
+	}
+
+	@media(min-width:768px){
+		.img-1 img{
+			position: relative;
+			left: 15%;
+			width: 400px;
+			height: auto;
+			
+		}
+	}
+
+
+
+	
+</style>
+
+<script>
+
+	window.addEventListener('DOMContentLoaded' , function(){
+        const whatsappIcono = document.querySelector('.whatsapp-icono') 
+	whatsappIcono.setAttribute('href' , 'https://web.whatsapp.com/')
+	})
+	
+</script>

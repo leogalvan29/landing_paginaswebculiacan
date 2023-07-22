@@ -1,0 +1,66 @@
+--- 
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import Header from '../components/Header.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="stylesheet" href="" id="fuente">
+	</head>
+	<body>
+		<Header/>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 124, 58, 237;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+		--cta:#4a0bff;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: #F6F6F6;
+	}
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+	body{
+		font-family: 'Poppins', sans-serif;
+	}
+
+	h1,h2,h3,h4,h5 {
+		font-family: 'Poppins', sans-serif;
+	}
+
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+</style>
+
+<script>
+	 const fuente = document.querySelector('#fuente')
+	 const urlFuente = "https://fonts.googleapis.com/css2?family=Poppins&display=swap" 
+	 function agregarCdn(){
+        
+		fuente.setAttribute('href' , urlFuente)
+	 }
+
+	 window.addEventListener('load', agregarCdn)
+</script>
+
+
