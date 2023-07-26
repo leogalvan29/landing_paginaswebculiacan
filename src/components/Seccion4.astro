@@ -1,0 +1,39 @@
+---
+ import alpinejs from "@astrojs/alpinejs";
+
+---
+
+<div class="contenedor-4">
+    
+   
+    <div class="cerrar" x-data="{ open : false }" >
+        <button class="abrir" @click="open = true">click</button>
+        <ul x-show="open" >
+            <li>Menu item</li>
+            <li>Menu Item</li>
+            <li>Menu Item</li>
+            <li>MEnu Item</li>
+        </ul>
+        <button class="abrir" @click="open = false">click</button>
+    </div>
+</div>
+
+
+<style> 
+    
+</style>
+
+
+<script>
+
+    window.addEventListener('DOMContentLoaded' , function(){
+        const abrirBtn = document.querySelector('.abrir')
+    const menu = document.querySelector('.cerrar')
+    abrirBtn.addEventListener('click', function(){
+         menu.classList.toggle(".mostrar")
+    })
+    })
+   
+
+</script>
+ 

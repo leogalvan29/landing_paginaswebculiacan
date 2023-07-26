@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nota from "../components/Nota.astro"
+
+
+
+var myHeaders = new Headers();
+
+myHeaders.append("Authorization", "Basic YWRtaW46Y3VsaWFjYW4yMDE2");
+myHeaders.append("Content-Type", "application/json; charset=utf-8");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+
+const datos = await fetch('https://www.paginaswebculiacan.net/wp-json/wp/v2/posts?per_page=10' , requestOptions)
+const data = await datos.json()
+const notas = data
+
+ //console.log(data)
+  
+//console.log(data)
+
+ 
+---
+ 
+
+<Layout>
+
+     
+
+      {notas.map((nota) => (
+          <Nota 
+            id={nota.id}
+          /> 
+      ))}
+     <h1>blog</h1>
+</Layout>
+
+   

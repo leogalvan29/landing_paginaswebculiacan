@@ -2,8 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import Seccion2 from '../components/Seccion2.astro';
 import Seccion3 from '../components/Seccion3.astro';
+import Footer from '../components/Footer.astro';
+import Seccion4 from '../components/Seccion4.astro';
 
-const data = await fetch(`https://www.paginaswebculiacan.net/wp-json/wp/v2/pages/${3655}`)
+
+
+var myHeaders = new Headers();
+
+myHeaders.append("Authorization", "Basic YWRtaW46Y3VsaWFjYW4yMDE2");
+myHeaders.append("Content-Type", "application/json; charset=utf-8");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+const data = await fetch(`https://www.paginaswebculiacan.net/wp-json/wp/v2/pages/${3655}` , requestOptions)
 const datos = await data.json()
 
 
@@ -11,8 +26,8 @@ const datos = await data.json()
 const datosLanding = datos.acf
 console.log(datosLanding)
 
-const {titulo_1, descripcion1, cta_1, link_cta1, img_1, titulo_2, logo_wordpress, logo_shopify, logo_astro, logo_google, foto_leonel, sobre_mi, titulo_sobremi , imagen_proceso ,descripcion_proceso , proceso , listado_servicios , titulo_servicios , parrafo_servicios , imagen_servicios , whatsapp_icono} = datosLanding
-
+const {titulo_1, descripcion1, cta_1, link_cta1, img_1, titulo_2, logo_wordpress, logo_shopify, logo_astro, logo_google, foto_leonel, sobre_mi, titulo_sobremi , imagen_proceso ,descripcion_proceso , proceso , listado_servicios , titulo_servicios , parrafo_servicios , imagen_servicios , whatsapp_icono , texto_footer} = datosLanding
+ 
 
 //codigo para eliminar saltos de linea
 
@@ -37,7 +52,7 @@ console.log(jsonData);
 
 
 <Layout title="Welcome to Astro.">
-	<a href="#" class="whatsapp-icono fixed z-10 bottom-1 right-2"><img src={whatsapp_icono.url} alt=""></a>
+	<a href="#" class="whatsapp-icono fixed z-10 bottom-1 right-2 w-[48px]"><img src={whatsapp_icono.url} alt=""></a>
 	
 	 <main class="contenedor-principal">
         <div class="section-1">
@@ -67,6 +82,13 @@ console.log(jsonData);
 		parrafo_servicios={parrafo_servicios}
 		imagen_servicios={imagen_servicios}
 	  /> 
+
+	  <Seccion4/>
+	 
+	  <Footer 
+	    texto_footer={texto_footer} 
+	 
+	  />
 </Layout>
 
 <style> 
@@ -123,9 +145,9 @@ console.log(jsonData);
 		text-decoration: none;
         background-color: var(--cta);
         widows: 200px;
-        height: 30px;
+        height: 50px;
         color: #fff;
-        padding: 5px 15px;
+        padding: 10px 15px;
         border-radius: 25px;
         display: flex;
         align-items: center;
