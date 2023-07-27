@@ -45,33 +45,35 @@ const jsonData = { items };
 
 console.log(jsonData);
 
+
+
 ---
 
 
-
+ 
 
 
 <Layout title="Welcome to Astro.">
-	<a href="#" class="whatsapp-icono fixed z-10 bottom-1 right-2 w-[48px]"><img src={whatsapp_icono.url} alt="icono-whatsapp" loading="lazy"></a>
+	<a href="https://api.whatsapp.com/send?phone=526674157897&text=Hola%20necesito%20informacion!%20" class="whatsapp-icono fixed z-10 bottom-1 right-2 w-[48px]"><img src={whatsapp_icono.url} alt="icono-whatsapp" loading="lazy"></a>
 	
-	 <main class="contenedor-principal">
+	 <main class="contenedor-principal"> 
         <div class="section-1">
 			<div class="txt-1">
               <h1>{titulo_1}</h1>
 			  <p>{descripcion1}</p>
-			  <a href="https://web.whatsapp.com/">{cta_1}</a>
+			  <a href="https://api.whatsapp.com/send?phone=526674157897&text=Hola%20necesito%20informacion!%20">{cta_1}</a>
 			</div>
 			<div class="img-1">
               <img src={img_1.url} alt="imagen seccion 1" loading="lazy">
 			</div>
 		</div>
-	
+	 
 	 </main> 
 	 <Seccion2 
 		   
 	 titulo={titulo_1}
 	 imagen={imagen_proceso}
-	 descripcion={descripcion_proceso}
+	 descripcion={descripcion_proceso} 
 	 proceso={proceso}
 	
       />
@@ -230,7 +232,7 @@ console.log(jsonData);
 
 	window.addEventListener('DOMContentLoaded' , function(){
         const whatsappIcono = document.querySelector('.whatsapp-icono') 
-	whatsappIcono.setAttribute('href' , 'https://web.whatsapp.com/')
+	whatsappIcono.setAttribute('href' , 'https://api.whatsapp.com/send?phone=526674157897&text=Hola%20necesito%20informacion!%20')
 	})
 	
 </script>

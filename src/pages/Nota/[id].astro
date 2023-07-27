@@ -35,17 +35,24 @@ console.log(Astro.props)
 //console.log(Astro.params) 
 
 const {title,content} = Astro.props.notaBlog  
+console.log(content.rendered)
 ---
 
 
 <Layout>
 
     <h1>{title.rendered}</h1> 
-    <p>{content.rendered}</p>  
+    <div class="contenido"><Fragment set:html={content.rendered} /></div>   
     
-
+   
+ 
 
 
 </Layout>
+
+<script>
+
+    
+</script>  
   
- 
+  
